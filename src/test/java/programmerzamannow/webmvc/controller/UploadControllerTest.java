@@ -34,7 +34,8 @@ class UploadControllerTest {
                         .param("name","Arief")
         ).andExpectAll(
                 status().isOk(),
-                content().string(Matchers.containsString(("Success save profile Arief to upload\\troll.png")))
+                content().string(Matchers.containsString(("Success save profile Arief to upload/troll.png")
+                        .replace("/","\\").toString()))
         );
     }
 }
