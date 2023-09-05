@@ -1,5 +1,6 @@
 package programmerzamannow.webmvc.controller;
 
+import jakarta.servlet.http.Cookie;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,8 @@ class AuthControllerTest {
                         .param("password","rahasia")
         ).andExpectAll(
                 status().isOk(),
-                content().string(Matchers.containsString("OK"))
+                content().string(Matchers.containsString("OK")),
+                cookie().value("username",Matchers.containsString("arief"))
         );
     }
 
@@ -43,7 +45,18 @@ class AuthControllerTest {
                         .param("password","salah")
         ).andExpectAll(
                 status().isUnauthorized(),
-                content().string(Matchers.containsString("KO))
+                content().string(Matchers.containsString("KO"))
+        );
+    }
+
+    @Test
+    void getUser() throws Exception {
+        mockMvc.perform(
+                get("/auth/user")
+                        .cookie(new Cookie("username","arief"))
+        ).andExpectAll(
+                status().isOk(),
+                content().string(Matchers.containsString("Hello arief"))
         );
     }
 }
