@@ -50,4 +50,29 @@ class PersonControllerTest {
                         " with address Jalan Belum Jadi, Kabupaten Bandung, Indonesia, 40394"))
         );
     }
+
+    @Test
+    void createPersonValidationError() throws Exception {
+        mockMvc.perform(
+                post("/person")
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .param("middleName","Karditya")
+                        .param("lastName","Hermawan")
+                        .param("email","arief@contoh.com")
+                        .param("phone","089699669999")
+                        .param("address.street","Jalan Belum Jadi")
+                        .param("address.city","Kabupaten Bandung")
+                        .param("address.country","Indonesia")
+                        .param("address.postalCode","40394")
+                        .param("hobbies[0]", "Nonton Youtube PZN")
+                        .param("hobbies[1]", "Nonton Youtube D4A")
+                        .param("hobbies[2]", "Nonton Youtube DEFYN")
+                        .param("socialMedias[0].name","Facebook")
+                        .param("socialMedias[0].location","facebook.com/ARIEF.KARDITYA")
+                        .param("socialMedias[1].name","Instagram")
+                        .param("socialMedias[1].location","Instagram.com/ARIEF.KARDITYA")
+        ).andExpectAll(
+                status().isBadRequest()
+        );
+    }
 }
