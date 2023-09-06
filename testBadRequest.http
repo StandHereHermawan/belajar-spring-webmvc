@@ -1,0 +1,15 @@
+POST http://localhost:8181/api/person
+Content-Type: application/json
+Accept: application/json
+
+{
+  "middleName": "Akbar",
+  "lastName": "Muharrom",
+  "hobbies": ["Nonton Youtube","Baca Manga","Berbagi humor rasis"],
+  "socialMedias": [
+    {
+      "name": "Facebook",
+      "location": "facebook.com/reimii"
+    }
+  ]
+}
