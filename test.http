@@ -1,0 +1,18 @@
+POST http://localhost:8181/api/person
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "Hilmi",
+  "middleName": "Akbar",
+  "lastName": "Muharrom",
+  "email": "imiia@contoh.com",
+  "phone": "085169699696",
+  "hobbies": ["Nonton Youtube","Baca Manga","Berbagi humor rasis"],
+  "socialMedias": [
+    {
+      "name": "Facebook",
+      "location": "facebook.com/reimii"
+    }
+  ]
+}
