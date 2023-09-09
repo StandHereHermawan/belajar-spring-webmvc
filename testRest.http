@@ -1,0 +1,7 @@
+POST http://localhost:8181/todos?todo=Belajar Rasis
+Accept: application/json
+
+####
+
+GET http://localhost:8181/todos
+Accept: application/json
